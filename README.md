@@ -1,6 +1,5 @@
 **Fungsi:** Halaman utama repositori yang menjelaskan tujuan proyek,  *tech stack* , dan cara menjalankan aplikasi.
 
-
 # AegisLog Web3 — Platform Audit Keamanan & Log Forensik Digital Anti-Manipulasi
 
 **AegisLog Web3** adalah platform enterprise hybrid (Web2 + Web3) yang dirancang untuk menjamin integritas berkas audit keamanan, laporan pengujian penetrasi (*penetration test*), dan *log* forensik digital.
@@ -21,15 +20,15 @@ Dengan menggabungkan kekuatan **Laravel 13 (PHP 8.4)**, **Vue 3 (Composition API
 
 ## 🛠 Ringkasan Tech Stack
 
-| Layer                        | Teknologi      | Versi / Catatan                                       |
-| :--------------------------- | :------------- | :---------------------------------------------------- |
-| **Backend Framework**  | Laravel        | v13.x (PHP 8.4+)                                |
-| **Frontend Framework** | Vue.js         | v3.5+ (Composition API + Inertia.js / Vite)     |
-| **Database Engine**    | PostgreSQL     | v16+ (`JSONB` & *Partial Indexing*)             |
-| **Web3 Client Engine** | Viem / Wagmi   | v2.x / v3.x                                     |
-| **Smart Contract**     | Solidity       | v0.8.24 (EVM Compatible / Polygon / Arbitrum)   |
-| **Real-time Server**   | Laravel Reverb | WebSocket Native (Fase 2)                       |
-| **State Management**   | Pinia          | v4.x                                            |
+| Layer                        | Teknologi      | Versi / Catatan                               |
+| :--------------------------- | :------------- | :-------------------------------------------- |
+| **Backend Framework**  | Laravel        | v13.x (PHP 8.4+)                              |
+| **Frontend Framework** | Vue.js         | v3.5+ (Composition API + Inertia.js / Vite)   |
+| **Database Engine**    | PostgreSQL     | v16+ (`JSONB` & *Partial Indexing*)       |
+| **Web3 Client Engine** | Viem / Wagmi   | v2.x / v3.x                                   |
+| **Smart Contract**     | Solidity       | v0.8.24 (EVM Compatible / Polygon / Arbitrum) |
+| **Real-time Server**   | Laravel Reverb | WebSocket Native (Fase 2)                     |
+| **State Management**   | Pinia          | v4.x                                          |
 
 ---
 

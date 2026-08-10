@@ -19,14 +19,16 @@ return new class extends Migration
             $table->string('integrity_status', 20)->default('pending');
             $table->jsonb('metadata');
             $table->timestamp('created_at')->useCurrent();
-
-            $table->index(['integrity_status'])
-                ->where('integrity_status', 'tampered');
         });
+
+        DB::statement('CREATE INDEX idx_audit_logs_metadata_gin ON audit_logs USING gin (metadata);');
+        DB::statement("CREATE INDEX idx_tampered_logs ON audit_logs (integrity_status) WHERE integrity_status = 'tampered';");
     }
 
     public function down(): void
     {
+        DB::statement('DROP INDEX IF EXISTS idx_audit_logs_metadata_gin;');
+        DB::statement('DROP INDEX IF EXISTS idx_tampered_logs;');
         Schema::dropIfExists('audit_logs');
     }
 };
