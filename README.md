@@ -23,13 +23,30 @@ Dengan menggabungkan kekuatan **Laravel 13 (PHP 8.4)**, **Vue 3 (Composition API
 
 | Layer                        | Teknologi      | Versi / Catatan                                       |
 | :--------------------------- | :------------- | :---------------------------------------------------- |
-| **Backend Framework**  | Laravel        | v13.x (PHP 8.4)                                       |
-| **Frontend Framework** | Vue.js         | v3.5+ (Composition API + Inertia.js / Vite)           |
-| **Database Engine**    | PostgreSQL     | v16+ (`JSONB` & *Partial Indexing*)               |
-| **Web3 Client Engine** | Viem / Wagmi   | v2.x                                                  |
-| **Smart Contract**     | Solidity       | v0.8.24 (EVM Compatible / Polygon / Arbitrum / Anvil) |
-| **Real-time Server**   | Laravel Reverb | WebSocket Native                                      |
-| **State Management**   | Pinia          | v2.x                                                  |
+| **Backend Framework**  | Laravel        | v13.x (PHP 8.4+)                                |
+| **Frontend Framework** | Vue.js         | v3.5+ (Composition API + Inertia.js / Vite)     |
+| **Database Engine**    | PostgreSQL     | v16+ (`JSONB` & *Partial Indexing*)             |
+| **Web3 Client Engine** | Viem / Wagmi   | v2.x / v3.x                                     |
+| **Smart Contract**     | Solidity       | v0.8.24 (EVM Compatible / Polygon / Arbitrum)   |
+| **Real-time Server**   | Laravel Reverb | WebSocket Native (Fase 2)                       |
+| **State Management**   | Pinia          | v4.x                                            |
+
+---
+
+## 🚀 Menjalankan Aplikasi (Scaffold)
+
+```bash
+# Backend
+composer install
+cp .env.example .env && php artisan key:generate
+php artisan migrate
+
+# Frontend
+npm install
+npm run dev          # atau: npm run build && php artisan serve
+```
+
+Kontrak EVM tersedia di `contracts/AuditVault.sol` (kompilasi dengan Foundry: `forge build`).
 
 ---
 

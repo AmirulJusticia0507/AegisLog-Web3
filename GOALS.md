@@ -1,11 +1,9 @@
+**Fungsi:** Roadmap pengerjaan bertahap dan target performa (KPI) sistem.
 
----
-### 6. `GOALS.md`
-> **Fungsi:** Roadmap pengerjaan bertahap dan target performa (KPI) sistem.
-
-```markdown
 # Tujuan Proyek & Peta Jalan Rekayasa (AegisLog Web3 - Q3/Q4 2026)
+
 ---
+
 ## 🎯 Sasaran Strategis
 
 1. **Jaminan Integritas 100%**: Memastikan berkas audit yang dijangkarkan ke *smart contract* memiliki ketahanan mutlak terhadap manipulasi *database off-chain*.
@@ -39,6 +37,6 @@
 
 | Metrik                              | Target Sasaran               | Alat Ukur                    |
 | :---------------------------------- | :--------------------------- | :--------------------------- |
-| **Kecepatan Respons API**     | `< 75ms` (P95)             | Laravel Pulse                |
-| **Waktu Deteksi Tampering**   | `< 1.0 detik` dari insiden | Event Log Laravel Reverb     |
-| **Tingkat Akurasi Hash Sync** | `100%`                     | Integration Test & Audit Log |
+| **Kecepatan Respons API**           | `< 75ms` (P95)               | Laravel Pulse                |
+| **Waktu Deteksi Tampering**         | `< 1.0 detik` dari insiden   | Event Log Laravel Reverb     |
+| **Tingkat Akurasi Hash Sync**       | `100%`                       | Integration Test & Audit Log |
