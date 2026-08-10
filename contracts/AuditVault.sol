@@ -47,24 +47,24 @@ contract AuditVault {
 
     /// @notice Verify that the stored on-chain hash still matches an expected hash.
     function verify(bytes32 auditId, bytes32 expectedHash) external view returns (bool) {
-        Anchor memory anchor = anchors[auditId];
-        if (anchor.anchoredAt == 0) {
+        Anchor memory stored = anchors[auditId];
+        if (stored.anchoredAt == 0) {
             revert AuditNotFound(auditId);
         }
 
-        return anchor.fileHash == expectedHash;
+        return stored.fileHash == expectedHash;
     }
 
     /// @notice Returns the full on-chain anchor record.
     function getAnchor(
         bytes32 auditId
     ) external view returns (bytes32 fileHash, address anchoredBy, uint256 blockNumber, uint256 anchoredAt) {
-        Anchor memory anchor = anchors[auditId];
-        if (anchor.anchoredAt == 0) {
+        Anchor memory stored = anchors[auditId];
+        if (stored.anchoredAt == 0) {
             revert AuditNotFound(auditId);
         }
 
-        return (anchor.fileHash, anchor.anchoredBy, anchor.blockNumber, anchor.anchoredAt);
+        return (stored.fileHash, stored.anchoredBy, stored.blockNumber, stored.anchoredAt);
     }
 
     function isAnchored(bytes32 auditId) external view returns (bool) {
