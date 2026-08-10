@@ -28,8 +28,8 @@
 
 ### Fase 3: Worker Audit Otomatis & Dashboard Cyberpunk (November 2026)
 
-- [ ] Pembangunan *scheduled task* Laravel untuk verifikasi berkala antara PostgreSQL dan *Smart Contract*.
-- [ ] Penyempurnaan UI *Cyber-Security Dashboard* Vue 3 dengan tabel reaktif dan grafik statistik.
+- [X] Pembangunan *scheduled task* Laravel untuk verifikasi berkala antara PostgreSQL dan *Smart Contract*.
+- [X] Penyempurnaan UI *Cyber-Security Dashboard* Vue 3 dengan tabel reaktif dan grafik statistik.
 
 ---
 

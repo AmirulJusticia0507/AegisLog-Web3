@@ -8,7 +8,6 @@ use App\Events\AuditLogTampered;
 use App\Models\AuditLog;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 

@@ -11,6 +11,7 @@ final class AuditEncryption
     public const CIPHER = 'aes-256-gcm';
 
     private const NONCE_LENGTH = 12;
+
     private const TAG_LENGTH = 16;
 
     private string $key;
@@ -51,7 +52,7 @@ final class AuditEncryption
             throw new RuntimeException('Enkripsi AES-256-GCM gagal.');
         }
 
-        return base64_encode($nonce . $tag . $ciphertext);
+        return base64_encode($nonce.$tag.$ciphertext);
     }
 
     public function decrypt(string $payload): string
