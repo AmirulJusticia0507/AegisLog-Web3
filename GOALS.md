@@ -22,7 +22,7 @@
 
 ### Fase 2: Pipeline Penjangkaran & Real-Time Alerting (Oktober 2026)
 
-- [ ] Pengintegrasian perhitungan *hash client-side* di Vue 3 dengan Viem.
+- [X] Pengintegrasian perhitungan *hash client-side* di Vue 3 dengan Viem.
 - [ ] Pembuatan Action Class Laravel 13 untuk enkripsi berkas AES-256 dan penyimpanannya ke PostgreSQL.
 - [ ] Konfigurasi **Laravel Reverb** untuk dorongan notifikasi *tampering* secara *real-time*.
 
