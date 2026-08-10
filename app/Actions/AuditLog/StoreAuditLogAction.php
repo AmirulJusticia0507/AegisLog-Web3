@@ -6,8 +6,10 @@ namespace App\Actions\AuditLog;
 
 use App\Models\AuditLog;
 use App\Models\User;
+use App\Services\AuditEncryption;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Web3p\EthereumUtil\Util;
@@ -16,7 +18,10 @@ class StoreAuditLogAction
 {
     public const SIGN_MESSAGE_TEMPLATE = 'AegisLog-Web3 anchor {hash}';
 
-    public function __construct(private readonly Util $ethereumUtil) {}
+    public function __construct(
+        private readonly Util $ethereumUtil,
+        private readonly AuditEncryption $encryption,
+    ) {}
 
     /**
      * Persist an uploaded audit file after verifying hash integrity
@@ -30,7 +35,7 @@ class StoreAuditLogAction
         $this->assertSignatureValid($data);
 
         $message = str_replace('{hash}', $data['client_hash'], self::SIGN_MESSAGE_TEMPLATE);
-        $path = $file->store('audit-files', 'local');
+        $path = $this->storeEncrypted($file);
 
         $user = User::firstOrCreate(
             ['wallet_address' => Str::lower($data['address'])],
@@ -53,8 +58,22 @@ class StoreAuditLogAction
                 'signed_by' => Str::lower($data['address']),
                 'signed_message' => $message,
                 'signature' => $data['signature'],
+                'encryption' => [
+                    'algorithm' => AuditEncryption::CIPHER,
+                    'encoding' => 'base64:nonce+tag+ciphertext',
+                ],
             ],
         ]);
+    }
+
+    private function storeEncrypted(UploadedFile $file): string
+    {
+        $encrypted = $this->encryption->encrypt((string) file_get_contents($file->getRealPath()));
+        $filename = Str::uuid().'.enc';
+
+        Storage::disk('local')->put("audit-files/{$filename}", $encrypted);
+
+        return "audit-files/{$filename}";
     }
 
     private function assertHashMatches(UploadedFile $file, string $clientHash): void

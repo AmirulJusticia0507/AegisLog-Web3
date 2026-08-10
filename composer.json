@@ -9,6 +9,7 @@
         "php": "^8.3",
         "inertiajs/inertia-laravel": "^3.3",
         "laravel/framework": "^13.8",
+        "laravel/reverb": "^1.11",
         "laravel/tinker": "^3.0",
         "web3p/ethereum-util": "^0.1.4"
     },

@@ -6,8 +6,10 @@ namespace Tests\Feature;
 
 use App\Actions\AuditLog\StoreAuditLogAction;
 use App\Models\AuditLog;
+use App\Services\AuditEncryption;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Web3p\EthereumUtil\Util;
 
@@ -59,7 +61,13 @@ class AuditLogStoreTest extends TestCase
 
         $log = AuditLog::first();
         $this->assertSame(64, strlen($log->file_hash));
-        $this->assertSame('pending', $log->metadata['signed_by'] === $log->metadata['signed_by'] ? 'pending' : '');
+        $this->assertSame('pending', $log->integrity_status);
+
+        $stored = Storage::disk('local')->get($log->file_path);
+        $this->assertIsString($stored);
+        $this->assertNotSame('audit-report-content', $stored);
+        $this->assertSame('aes-256-gcm', $log->metadata['encryption']['algorithm']);
+        $this->assertSame('audit-report-content', app(AuditEncryption::class)->decrypt($stored));
     }
 
     public function test_rejects_on_hash_mismatch(): void
